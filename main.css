@@ -1,0 +1,55 @@
+body{	
+	font-family: arial;
+	margin: 0;
+}
+
+header{
+	background: #999;
+	color: white;
+	padding: 10px 0px 5px 0px;
+}
+
+header h1{
+	margin: 0;
+	display: inline;
+}
+nav ul{
+	margin: 0;
+	display: inline;
+}
+
+nav ul li{
+	background: #333;
+	color: white;
+	display: inline-block;
+	list-style-type: none;
+	padding: 5px 10px;
+	margin: 5px;
+}
+
+h1{
+	color: #000;
+}
+
+h2, h3, li {
+	color: #666;
+}
+
+a{
+	color: blue;
+}
+
+p{
+	background: gray;
+	color: white;
+	padding: 15px 5px;
+}
+
+.second{	
+	background: none;
+	color: #888;
+}
+
+#special{
+	color: red;
+}
