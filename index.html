@@ -1,9 +1,56 @@
 ---
-layout: home
+layout: default
 title: Home
-paginate: true
 ---
 
-<div class="intro">
+<div class="home">
+  <h1 class="page-heading">Home</h1>
   <p>Welcome to my blog! Here, I share tutorials, thoughts, and updates on various topics. Feel free to explore the latest posts below:</p>
+
+  {% if paginator %}
+    <h2 class="post-list-heading">Posts</h2>
+    <ul class="post-list">
+      {% for post in paginator.posts %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title }}
+            </a>
+          </h3>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        {% if paginator.previous_page %}
+          <a class="pagination-item" href="{{ paginator.previous_page_path | relative_url }}">&laquo;</a>
+        {% else %}
+          <span class="pagination-item disabled">&laquo;</span>
+        {% endif %}
+      
+        <!-- Page Numbers -->
+        {% for i in (1..paginator.total_pages) %}
+          {% if i == paginator.page %}
+            <span class="pagination-item current">{{ i }}</span>
+          {% else %}
+            {% if i == 1 %}
+            <!-- Page 1 has a special path -->
+            <a class="pagination-item" href="{{ '/' | relative_url }}">{{ i }}</a>
+            {% else %}
+            <!-- Other pages -->
+            <a class="pagination-item" href="{{ '/page' | append: i | relative_url }}">{{ i }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      
+        {% if paginator.next_page %}
+          <a class="pagination-item" href="{{ paginator.next_page_path | relative_url }}">&raquo;</a>
+        {% else %}
+          <span class="pagination-item disabled">&nbsp;</span>
+        {% endif %}
+      </div>
+  {% else %}
+    <p>No posts found!</p>
+  {% endif %}
 </div>
